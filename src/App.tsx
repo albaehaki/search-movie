@@ -17,20 +17,32 @@ function App() {
   const [toogle, setToggle] = useState<boolean>(false)
   const [keyword, setKeyword] = useState<String>()
 
-  useEffect(() => {
-    axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=spiderman`)
+  // useEffect(() => {
+  //   axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=${keyword}`)
+  //     .then((response) => {
+  //       setUsers(response.data.Search);
+  //     })
+  // }, [])
+
+  const api = (e: any) => {
+    axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=${e}`)
       .then((response) => {
         setUsers(response.data.Search);
       })
-  }, [])
+  }
 
   const garux = (e: any) => {
     e.preventDefault()
-    setToggle(!toogle)
-    console.log(users);
-    setKeyword(e.target.nextElementSibling.value)
+    api(keyword)
+    //setToggle(!toogle)
+    //console.log(users);
+    //setKeyword(e.target.nextElementSibling.value)
 
   }
+
+  const ubah = (e: any) => {
+    setKeyword(e.target.value)
+  };
 
   return (
 
@@ -39,12 +51,18 @@ function App() {
         <div className='flex pt-10 pb-5'>
           <h1 className='text-xl font-medium m-auto'>Search Movie</h1>
         </div>
-        <button onClick={garux} type="submit">hallo</button>
         <div className='pb-5'>
-          <Search click={garux} keyword={keyword} />
+          <Search change={ubah} click={garux} keyword={keyword} />
         </div>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
-          {(toogle === true) ? <Card items={users} /> : ` `}
+          {users ? users.map((m: any) => {
+            return (
+              <Card items={m} />
+
+            )
+
+
+          }) : `Loading... `}
 
         </div>
       </div>
