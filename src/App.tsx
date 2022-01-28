@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Search from "./search/Search";
 import { Card } from "./Card/Card";
+import { Detail } from "./detail/Detail";
 import axios from 'axios';
 import { type } from 'os';
+import { Route, Routes } from 'react-router-dom';
 
 // interface User {
 //   id: number;
@@ -46,7 +48,7 @@ function App() {
 
   return (
 
-    <div className="flex">
+    <div className="flex ">
       <div className='m-auto flex-col  w-screen'>
         <div className='flex pt-10 pb-5'>
           <h1 className='text-xl font-medium m-auto'>Search Movie</h1>
@@ -55,14 +57,20 @@ function App() {
           <Search change={ubah} click={garux} keyword={keyword} />
         </div>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
-          {users ? users.map((m: any) => {
+          {/* {users ? users.map((m: any) => {
             return (
               <Card items={m} />
 
-            )
+            ) */}
 
 
-          }) : `Loading... `}
+          {/* }) : `Tidak ada `} */}
+          <Routes>
+            <Route path="detail" element={<Detail />} />
+            <Route path="/" element={<Card items={users} />} />
+
+
+          </Routes>
 
         </div>
       </div>
