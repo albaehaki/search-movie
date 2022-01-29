@@ -17,11 +17,11 @@ export const Card: React.FunctionComponent<any> = ({ items }: any) => {
             {items ? items.map((m: any, i: number) => {
                 return (
                     <div style={{ backgroundImage: `url(${m.Poster})` }} key={i} className=" col-span-1">
-                        <div className='flex flex-col px-5 pb-3 pt-5 backdrop-blur-lg h-full'>
+                        <div className='flex flex-col px-5 pb-3 pt-5 backdrop-blur-lg h-full backdrop-brightness-50'>
                             <img className='h-[250px]  m-auto' src={m.Poster} alt="" />
-                            <p className='invert-[100%] text-shadow-sm'>{m.Title}</p>
+                            <p className='invert-[100%] font-normal'>{m.Title}</p>
                         </div>
                     </div>)
-            }) : `tidak ada`}
+            }) : <p className='invert flex font-medium m-auto col-span-full'>Tidak di temukan</p>}
         </>);
 };
