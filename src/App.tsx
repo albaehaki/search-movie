@@ -49,7 +49,7 @@ function App() {
   return (
     //style={users ? { backgroundImage: `url(${users[0].Poster})` } : { backgroundColor: 'rgb(203 213 225)' }}
 
-    <div className="flex bg-cover h-screen bg-gradient-to-r from-cyan-300 to-red-300">
+    <div className="flex bg-cover h-screen bg-gradient-to-r from-cyan-300 to-rose-300">
       <div className='m-auto flex-col  w-screen backdrop-blur-2xl'>
         <div className='flex pt-5 pb-5'>
           <h1 className='text-xl font-medium m-auto invert'>Search Movie</h1>

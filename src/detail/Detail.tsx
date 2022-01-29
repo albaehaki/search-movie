@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Detail: React.FunctionComponent<any> = () => {
+export const Detail: React.FunctionComponent<any> = ({ items }) => {
   return (
-    <div className='bg-red-700'>
+    <div className=''>
       <p>detail</p>
     </div>);
 };
