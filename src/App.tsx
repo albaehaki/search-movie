@@ -29,13 +29,13 @@ function App() {
   // }, [])
 
   const api = (e: any) => {
-    axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=${e}`)
+    axios.get(`http://www.omdbapi.com/?apikey="get your apikey"s=${e}`)
       .then((response) => {
         setUsers(response.data.Search);
       })
   }
   const api2 = (e: any) => {
-    axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&i=${e}`)
+    axios.get(`http://www.omdbapi.com/?apikey="get your apikey"i=${e}`)
       .then((response) => {
         setPar(response.data);
       })
