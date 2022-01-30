@@ -18,6 +18,8 @@ function App() {
   const [users, setUsers] = useState<any>([])
   const [toogle, setToggle] = useState<boolean>(false)
   const [keyword, setKeyword] = useState<String>()
+  const [id, setId] = useState<String>()
+  const [par, setPar] = useState<any>([])
 
   // useEffect(() => {
   //   axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=${keyword}`)
@@ -32,6 +34,20 @@ function App() {
         setUsers(response.data.Search);
       })
   }
+  const api2 = (e: any) => {
+    axios.get(`http://www.omdbapi.com/?apikey=aa1a78d7&i=${e}`)
+      .then((response) => {
+        setPar(response.data);
+      })
+  }
+
+  const ambil = async (e: any) => {
+    //e.preventDefault()
+    api2(e.currentTarget.id)
+    //.getAttribute('data-attr')
+    //.previousSibling.previousSibling.
+  }
+
 
   const garux = (e: any) => {
     e.preventDefault()
@@ -57,7 +73,7 @@ function App() {
         <div className='pb-5'>
           <Search change={ubah} click={garux} keyword={keyword} />
         </div>
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 overflow-x-hidden'>
           {/* {users ? users.map((m: any) => {
             return (
               <Card items={m} />
@@ -67,10 +83,8 @@ function App() {
 
           {/* }) : `Tidak ada `} */}
           <Routes>
-            <Route path="detail" element={<Detail />} />
-            <Route path="/" element={<Card items={users} />} />
-
-
+            <Route path="detail" element={<Detail items={par} />} />
+            <Route path="/" element={<Card items={users} click={ambil} />} />
           </Routes>
 
         </div>
