@@ -13,14 +13,14 @@ function App() {
 
   const api = (e: any) => {
     axios
-      .get(`http://www.omdbapi.com/?apikey=2188f3f9&s=${e}`)
+      .get(`http://www.omdbapi.com/?apikey=aa1a78d7&s=${e}`)
       .then((response) => {
         setUsers(response.data.Search);
       });
   };
   const api2 = (e: any) => {
     axios
-      .get(`http://www.omdbapi.com/?apikey=2188f3f9&i=${e}`)
+      .get(`http://www.omdbapi.com/?apikey=aa1a78d7&i=${e}`)
       .then((response) => {
         setPar(response.data);
       });
